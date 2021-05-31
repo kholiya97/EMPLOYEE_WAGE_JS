@@ -1,36 +1,53 @@
-console.log("Welcome to Employee Wage Problem \n")
-//UC1 Ability to check Employees is present or absent.
-const IS_ABSENT = 0;
-let empCheck = Math.floor(Math.random()*10)%2;
-if(empCheck == IS_ABSENT)
+console.log("welcome to employee wage computation problem");
+console.log("UC1");
+//UC1
 {
-    console.log("Employee is absent");
+let checkForEmployeePresence= Math.floor((Math.random()*10)%2);
+const IS_ABSENT=0;
+if(checkForEmployeePresence==IS_ABSENT)
+{
+    console.log("employee is absent");
 }
-else 
+else
 {
-    console.log("Employee is present");
+    console.log("employee is present");
 }
-//UC2 Ability to Calculate Daily Employee Wage based on part time or full time work.
-console.log("UC2 Calculating wage for employee");
-const IS_PART_TIME = 1;
-const IS_FULL_TIME = 2;
-const PART_TIME_HOURS =4;
-const FULL_TIME_HOURS = 8;
-const WAGE_PER_HOUR = 20;
-let empHours = 0;
-switch(empCheck) //Calculate wage 
+}
+
+//UC2
+//Calculating Daily Wage
+//const IS_ABSENT=0;
+const IS_ABSENT=0;
+const WAGE_PER_HOUR=20;
+const TOTAL_WORKING_DAYS=20;
+let totalEmpHours=0;
+let employeeWage=0;
+for(i=0;i<TOTAL_WORKING_DAYS;i++)
 {
-    case IS_PART_TIME:
-    console.log("Employee is working part time");
-    empHours=PART_TIME_HOURS;
-    break;
-    case IS_FULL_TIME:
-    console.log("Employee is working full time");
-    empHours = FULL_TIME_HOURS;
-    break;
+let emp_hours= getEmpHours();
+totalEmpHours+=emp_hours;
+employeeWage= WAGE_PER_HOUR*totalEmpHours;
+}
+console.log("total work hours "+totalEmpHours);
+console.log("totol emp wage "+employeeWage);
+console.log("total working days "+TOTAL_WORKING_DAYS);
+//UC3
+function getEmpHours()
+{ 
+    let emp_hours=0;
+    let checkForEmployeePresence= Math.floor((Math.random()*10)%3);
+    switch(checkForEmployeePresence)
+{
+    case 1:
+        //console.log("employee is present for part time");
+        emp_hours=4;
+        return emp_hours;
+    case 2:
+        //console.log("employee is present for full time");
+        emp_hours=8;
+        return emp_hours;
     default:
-    empHours =0;
-    break;
+       // console.log("employee is absent");
+        return emp_hours;
 }
-let empWage = empHours*WAGE_PER_HOUR;
-console.log("Employee wage: " + empWage);
+}
